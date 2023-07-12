@@ -16,14 +16,14 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 // functional component
 const Heading=()=>(
 
-    // React fragment -- behave like an empty tag
-    <React.Fragment>
+    // React fragment -- behave like an empty tag   <React.fragment></React.fragment> we can also write it like <></>
+    <>
     <div>
      <h1>this is functional component</h1>
      </div>
      <div>
         <h1>this is second line</h1>
      </div>
-     </React.Fragment>
+     </>
 );
 root.render(<Heading/>);
