@@ -2001,13 +2001,17 @@ const reslists=[
  }
  const RestaurantCard=(props)=>{
    const {resData}=props;
+   const name=resData.data.data.name;
+   const rating=resData.data.data.avgRating;
+   const time=resData.data.data.deliveryTime;
+
    return(
      <div className="res-card">
-        <img  className="res-logo" src={"https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/"+ resData.data.data.cloudinaryImageId}  alt="" />
-     <h3>{resData.data.data.name}</h3>
+        <img  className="res-logo" src={"https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/"+ resData.data.data.cloudinaryImageId}  alt="img" />
+     <h3>{name}</h3>
         <h4>{resData.data.data.cuisines.join(", ")}</h4>
-        <h4>{resData.data.data.avgRating}⭐</h4>
-        <h4>{resData.data.data.deliveryTime} minutes </h4>
+        <h4>{rating}⭐</h4>
+        <h4>{time} minutes </h4>
      </div>
    )
  }
@@ -2019,17 +2023,16 @@ const Body=()=>{
             <button>Search</button>
          </div>
          <div className="res-container">
-          <RestaurantCard  resData={reslists[0]} />
-          <RestaurantCard  resData={reslists[1]} />
-          <RestaurantCard  resData={reslists[2]} />
-          <RestaurantCard  resData={reslists[3]} />
-          <RestaurantCard  resData={reslists[4]} />
-          <RestaurantCard  resData={reslists[5]} />
-          <RestaurantCard  resData={reslists[6]} />
-          <RestaurantCard  resData={reslists[7]} />
-          <RestaurantCard  resData={reslists[8]} />
-          <RestaurantCard  resData={reslists[9]} />
-          <RestaurantCard  resData={reslists[10]} />
+          {reslists.map((restaurant)=>(
+            <RestaurantCard key={restaurant.data.data.id} resData={restaurant}/>
+
+          ))}
+          {/* <RestaurantCard resData={reslists[0]}/>
+          <RestaurantCard resData={reslists[1]}/>
+          <RestaurantCard resData={reslists[2]}/>
+          <RestaurantCard resData={reslists[3]}/>
+          <RestaurantCard resData={reslists[4]}/>
+          <RestaurantCard resData={reslists[5]}/> */}
           
          </div>
 
