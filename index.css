@@ -34,8 +34,12 @@
     font-weight: bold;
 
 }
-.search{
+.filter{
     margin: 10px auto;
+}
+.filter-btn{
+    margin-left: 10px;
+    cursor: pointer;
 }
 .res-card{
     margin: 10px;
@@ -58,4 +62,5 @@
 }
 h4{
     width: 200px;
+    
 }
