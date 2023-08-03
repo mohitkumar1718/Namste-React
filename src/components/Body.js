@@ -1,9 +1,12 @@
 import RestaurantCard from "./RestaurantCard";
 import resLists from "../utils/mokdata";
 import { useEffect, useState } from "react";
+import Shimmer from "./Shimmer";
+
 const Body=()=>{
    const [ListOfRestaurants ,setListOfRestaurant]=useState([]);
-
+   const [list,setList]=useState(ListOfRestaurants);
+   const[searchText,setSearchText]=useState([]);
     useEffect(()=>{
       fetchData();
     },[]);
@@ -15,17 +18,35 @@ const Body=()=>{
       // console.log(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle.restaurants);
    
       setListOfRestaurant(
+         //optional chaining
          json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-       );
+       )
+       setList(
+         json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+
+       )
+       ;
    
     }
+
+   //  conditional rendering
+   //  if(ListOfRestaurants.length===0){
+   //    return <Shimmer/>;
+   //  }
    //  console.log("render is complete")
-    return (
+    return ListOfRestaurants.length===0? <Shimmer/> : (
       
        <div className="body">
-       {console.log(resLists)}
+       {/* {console.log(resLists)} */}
+       
           <div className="filter">
-             
+          <div className="search">
+            <input type="text" name="" value={searchText} onChange={(e)=>{setSearchText(e.target.value);}} />
+            <button onClick={()=>{
+               const filterRestaurant=list.filter((res=>res.info.name.toLowerCase().includes(searchText.toLowerCase())));
+               setListOfRestaurant(filterRestaurant);
+            }}>Search</button>
+         </div>
              <button className="filter-btn" onClick={()=>{
             //   filter logic
               let filterList=ListOfRestaurants.filter((res)=>res?.info?.avgRating>4);

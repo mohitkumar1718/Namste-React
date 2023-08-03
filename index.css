@@ -64,3 +64,25 @@ h4{
     width: 200px;
     
 }
+
+.shimmer-conatiner{
+    display: flex;
+    flex-wrap: wrap;
+}
+.shimmer_card{
+    margin: 10px;
+    width: 200px;
+    height:400px;
+    background-color: #f0f0f0;
+}
+.login-btn{
+    margin-right: 10px;
+    width: 60px;
+    height: 50px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.filter{
+    display: flex;
+    margin-left: 20px;
+}
