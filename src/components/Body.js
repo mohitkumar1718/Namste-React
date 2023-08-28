@@ -2,7 +2,7 @@ import RestaurantCard from "./RestaurantCard";
 import resLists from "../utils/mokdata";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
-
+import { Link, createBrowserRouter } from "react-router-dom";
 const Body=()=>{
    const [ListOfRestaurants ,setListOfRestaurant]=useState([]);
    const [list,setList]=useState(ListOfRestaurants);
@@ -29,12 +29,12 @@ const Body=()=>{
    
     }
 
-   //  conditional rendering
-   //  if(ListOfRestaurants.length===0){
-   //    return <Shimmer/>;
-   //  }
-   //  console.log("render is complete")
-    return ListOfRestaurants.length===0? <Shimmer/> : (
+    // conditional rendering
+    if(ListOfRestaurants.length===0){
+      return <Shimmer/>;
+    }
+    console.log("render is complete")
+    return  (
       
        <div className="body">
        {/* {console.log(resLists)} */}
@@ -56,7 +56,7 @@ const Body=()=>{
           </div>
           <div className="res-container">
            {ListOfRestaurants.map((restaurant)=> (
-             <RestaurantCard key={restaurant.info?.id} resData={restaurant}/>
+             <Link key={restaurant.info?.id} to={"/restaurant/"+restaurant.info?.id}><RestaurantCard  resData={restaurant}/></Link>
  
            ))}
           
@@ -70,6 +70,12 @@ const Body=()=>{
           </div>
  
        </div>
+
+
+    
+
+
+
     )
  }
  export default Body;
