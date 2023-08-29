@@ -6,14 +6,14 @@ import { useParams } from "react-router-dom";
 
 const RestaurantMenu=()=>{
    const [ResInfo,SetResInfo]=useState(null);
-   const {resId}=useParams();
-   console.log(resId);
+   const {resID}=useParams();
+   console.log(resID);  
    
    useEffect(()=>{
       fetchMenu();
    },[]);
    const fetchMenu= async ()=>{
-      const data= await fetch(MENU_API+resId+"&catalog_qa=undefined&submitAction=ENTER");
+      const data= await fetch(MENU_API+resID);
       const json= await data.json();
       console.log(json);
       SetResInfo(json.data);
