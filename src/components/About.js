@@ -6,7 +6,7 @@ class About extends Component{
         super(props);
         console.log("parent constructor");
     }
-
+  
     render(){
         console.log("parent render");
         return (
@@ -14,8 +14,8 @@ class About extends Component{
             <h1>About Us</h1>
             <h2>This is about us page</h2>
             
-            <UserClass name={"1"}/>
-            <UserClass name={"2"}/>
+            <UserClass name={"MOHIT KUMAR"}/>
+            
         
             </div>
         )
