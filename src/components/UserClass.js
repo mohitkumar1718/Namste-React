@@ -11,7 +11,7 @@ class UserClass extends React.Component{
 
             }
         };
-                                                                    //   console.log(this.props.name+ " constructor");
+                
     }
 
    async componentDidMount(){
