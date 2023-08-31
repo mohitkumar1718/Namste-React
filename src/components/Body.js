@@ -2,7 +2,8 @@ import RestaurantCard from "./RestaurantCard";
 import resLists from "../utils/mokdata";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
-import { Link, createBrowserRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 const Body=()=>{
    const [ListOfRestaurants ,setListOfRestaurant]=useState([]);
    const [list,setList]=useState(ListOfRestaurants);
@@ -15,32 +16,21 @@ const Body=()=>{
         "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.5211086&lng=77.2410541&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
       );
       const json = await data.json();
-      // console.log(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle.restaurants);
+      console.log(json);
    
-      setListOfRestaurant(
-         //optional chaining
-         json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-       )
-       setList(
-         json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-
-       )
-       ;
+      setListOfRestaurant(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+      setList(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
    
     }
-
-    // conditional rendering
-    if(ListOfRestaurants.length===0){
-      return <Shimmer/>;
-    }
-    console.log("render is complete")
-    return  (
+  const status=useOnlineStatus();
+  if(status===false)return <h1>You are offline</h1>;
+    
+    return (ListOfRestaurants.length===0)? <Shimmer/>: (
       
        <div className="body">
-       {/* {console.log(resLists)} */}
-       
           <div className="filter">
           <div className="search">
+            {/* search logic */}
             <input type="text" name="" value={searchText} onChange={(e)=>{setSearchText(e.target.value);}} />
             <button onClick={()=>{
                const filterRestaurant=list.filter((res=>res.info.name.toLowerCase().includes(searchText.toLowerCase())));
@@ -48,7 +38,7 @@ const Body=()=>{
             }}>Search</button>
          </div>
              <button className="filter-btn" onClick={()=>{
-            //   filter logic
+            //   filter logic for rating above 2
               let filterList=ListOfRestaurants.filter((res)=>res?.info?.avgRating>4);
                setListOfRestaurant(filterList);
             
@@ -60,12 +50,8 @@ const Body=()=>{
  
            ))}
           
-            {/* <RestaurantCard resData={resLists[0]}/>
-           <RestaurantCard resData={resLists[1]}/>
-            <RestaurantCard resData={resLists[2]}/>
-           <RestaurantCard resData={resLists[3]}/>
-           <RestaurantCard resData={resLists[4]}/>
-           <RestaurantCard resData={resLists[5]}/>  */}
+            {/* <RestaurantCard resData={resLists[0]}/> */}
+           
            
           </div>
  
