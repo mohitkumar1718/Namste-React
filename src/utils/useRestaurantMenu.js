@@ -8,7 +8,7 @@ const useRestaurantMenu=(resID)=>{
      const fetchData= async ()=>{
         const data= await fetch(MENU_API+resID);
         const json= await data.json();
-        console.log(json);
+        // console.log(json);
         SetResInfo(json.data);
     };
     return ResInfo; 

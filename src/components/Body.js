@@ -8,6 +8,7 @@ const Body=()=>{
    const [list,setList]=useState(ListOfRestaurants);
    const[searchText,setSearchText]=useState([]);
    const RestaurantcardLable=RestaurantLabel(RestaurantCard);
+   
     useEffect(()=>{
       fetchData();
     },[]);
@@ -20,7 +21,7 @@ const Body=()=>{
    
       setListOfRestaurant(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
       setList(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-   
+      
     }
   const status=useOnlineStatus();
   if(status===false)return <h1>You are offline</h1>;
