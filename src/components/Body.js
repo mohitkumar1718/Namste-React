@@ -1,5 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
-import resLists from "../utils/mokdata";
+import RestaurantCard, { RestaurantLabel } from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -8,6 +7,7 @@ const Body=()=>{
    const [ListOfRestaurants ,setListOfRestaurant]=useState([]);
    const [list,setList]=useState(ListOfRestaurants);
    const[searchText,setSearchText]=useState([]);
+   const RestaurantcardLable=RestaurantLabel(RestaurantCard);
     useEffect(()=>{
       fetchData();
     },[]);
@@ -24,29 +24,35 @@ const Body=()=>{
     }
   const status=useOnlineStatus();
   if(status===false)return <h1>You are offline</h1>;
-    
-    return (ListOfRestaurants.length===0)? <Shimmer/>: (
-      
-       <div className="body">
-          <div className="filter">
-          <div className="search">
+   if(ListOfRestaurants.length===0)return <Shimmer/> ;
+   
+    return (
+       <div className="body ">
+          <div className="flex ">
+          <div className="m-4 p-4">
             {/* search logic */}
-            <input type="text" name="" value={searchText} onChange={(e)=>{setSearchText(e.target.value);}} />
-            <button onClick={()=>{
+            <input className=" border border-solid border-black border-2 rounded-md" type="text" placeholder="Search" name="" value={searchText} onChange={(e)=>{setSearchText(e.target.value);}} />
+            <button className="px-4 py-1 bg-green-200 mx-3 rounded-md"
+            onClick={()=>{
+              
                const filterRestaurant=list.filter((res=>res.info.name.toLowerCase().includes(searchText.toLowerCase())));
                setListOfRestaurant(filterRestaurant);
             }}>Search</button>
-         </div>
-             <button className="filter-btn" onClick={()=>{
+            <button className="px-4 py-1 bg-green-200 mx-3 rounded-md " onClick={()=>{
             //   filter logic for rating above 2
               let filterList=ListOfRestaurants.filter((res)=>res?.info?.avgRating>4);
                setListOfRestaurant(filterList);
             
              }}>Top Rated Restaurant</button>
+         </div>
+             
           </div>
-          <div className="res-container">
+          <div className="flex flex-wrap   justify-center  ">
+          
            {ListOfRestaurants.map((restaurant)=> (
-             <Link key={restaurant.info?.id} to={"/restaurant/"+restaurant.info?.id}><RestaurantCard  resData={restaurant}/></Link>
+             <Link key={restaurant.info?.id} to={"/restaurant/"+restaurant.info?.id}>
+             {restaurant.info.promoted ?(<RestaurantcardLable resData={restaurant}/>) :(<RestaurantCard  resData={restaurant}/>) }
+             </Link>
  
            ))}
           
@@ -56,12 +62,10 @@ const Body=()=>{
           </div>
  
        </div>
-
-
-    
-
-
-
     )
  }
  export default Body;
+
+
+
+
