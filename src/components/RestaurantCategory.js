@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { IMG } from "../utils/constant";
 
-const RestaurantCategory=({data ,showItem,setShowIndex})=>{
+const RestaurantCategory=({data})=>{
     // console.log(data);
-
+  const [showItem,setShowItem]=useState(false);
     return (
          <div className="w-6/12 mx-auto my-6 p-4 bg-gray-100 shadow-lg">
             <div className="flex justify-between bg-gray-200 py-4 px-2 align-middle cursor-pointer" onClick={()=>{
-                setShowIndex();  
+                  showItem ? setShowItem(false) : setShowItem(true)
             }}>
             <span className="font-bold text-xl ">{data?.card?.card?.title} ({data?.card?.card?.itemCards.length})</span> 
             <span className="mx-3 ">⬇️</span>
