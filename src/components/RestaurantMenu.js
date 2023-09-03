@@ -8,7 +8,7 @@ const RestaurantMenu=()=>{
   
   const {resID}=useParams();
   const ResInfo=useRestaurantMenu(resID);
-  const [showIndex,setShowIndex]=useState(0);
+  
    
    if( ResInfo===null) return <Shimmer/>;
 

@@ -1,13 +1,15 @@
 import RestaurantCard, { RestaurantLabel } from "./RestaurantCard";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import userContext from "../utils/userContext";
 const Body=()=>{
    const [ListOfRestaurants ,setListOfRestaurant]=useState([]);
    const [list,setList]=useState(ListOfRestaurants);
    const[searchText,setSearchText]=useState([]);
    const RestaurantcardLable=RestaurantLabel(RestaurantCard);
+   const{loginUser,setUserName}=useContext(userContext);
    
     useEffect(()=>{
       fetchData();
@@ -45,6 +47,8 @@ const Body=()=>{
                setListOfRestaurant(filterList);
             
              }}>Top Rated Restaurant</button>
+             <label >UserName : </label>
+             <input className=" border border-solid border-black border-2 rounded-md" value={loginUser} onChange={(e)=>setUserName(e.target.value)}  />
          </div>
              
           </div>

@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import { CDN_URL } from "../utils/constant";
+import userContext from "../utils/userContext";
 
 const RestaurantCard=(props)=>{
    const {resData}=props;
@@ -8,6 +10,7 @@ const RestaurantCard=(props)=>{
    const avgRating=resData?.info?.avgRating;
    const deliveryTime=resData?.info?.sla?.deliveryTime;
    const costForTwo=resData?.info?.costForTwo;
+   const data=useContext(userContext);
    let cuisine=[];
    if(cuisines.length>3){
     cuisine.push(cuisines[0]);
@@ -23,9 +26,10 @@ const RestaurantCard=(props)=>{
   
          <h4 className=" font-bold py-2 text-lg">{name}</h4>
          <h4 className=" from-neutral-500">{ cuisine.join(", ")}</h4>
-         <h4 >Rating:{avgRating}⭐</h4>
-         <h4>{deliveryTime} minutes </h4>
+         <h4 >{deliveryTime} min &nbsp;&emsp; &emsp;&emsp;Rating:{avgRating}⭐</h4>
+         <h4> </h4>
          <h4>{costForTwo}</h4>
+          <h4>{data.loginUser}</h4>
       </div>
     )
   }
