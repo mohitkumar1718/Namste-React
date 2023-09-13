@@ -29,7 +29,7 @@ const RestaurantCard=(props)=>{
          <h4 >{deliveryTime} min &nbsp;&emsp; &emsp;&emsp;Rating:{avgRating}⭐</h4>
          <h4> </h4>
          <h4>{costForTwo}</h4>
-          <h4>{data.loginUser}</h4>
+          {/* <h4>{data.loginUser}</h4> */}
       </div>
     )
   }

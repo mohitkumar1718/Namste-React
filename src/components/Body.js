@@ -47,8 +47,8 @@ const Body=()=>{
                setListOfRestaurant(filterList);
             
              }}>Top Rated Restaurant</button>
-             <label >UserName : </label>
-             <input className=" border border-solid border-black border-2 rounded-md" value={loginUser} onChange={(e)=>setUserName(e.target.value)}  />
+             {/* <label >UserName : </label>
+             <input className=" border border-solid border-black border-2 rounded-md" value={loginUser} onChange={(e)=>setUserName(e.target.value)}  /> */}
          </div>
              
           </div>
