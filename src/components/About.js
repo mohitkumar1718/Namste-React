@@ -1,5 +1,4 @@
-
-import UserClass from "./UserClass";
+import Userfun from "./Userfun";
 import { Component } from "react";
 class About extends Component{
     constructor(props){
@@ -8,13 +7,10 @@ class About extends Component{
     }
   
     render(){
-        console.log("parent render");
+        // console.log("parent render");
         return (
             <div>
-            <h1>About Us</h1>
-            <h2>This is about us page</h2>
-            
-            <UserClass name={"MOHIT KUMAR"}/>
+            <Userfun name={"MOHIT KUMArr"}/>
             
         
             </div>

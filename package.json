@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "namste react",
   "scripts": {
+    "type": "module",
     "start": "parcel index.html ",
     "build": "parcel build index.html",
     "test": "jest"

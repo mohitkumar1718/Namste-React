@@ -17,14 +17,14 @@ const RestaurantCategory=({data})=>{
             <span className="font-bold text-xl ">{data?.card?.card?.title} ({data?.card?.card?.itemCards.length})</span> 
             <span className="mx-3 ">⬇️</span>
             </div>
-             
+          
            
             {showItem && data?.card?.card?.itemCards.map(list=>
             <div key={list?.card?.info?.id} className=" my-3 text-left  border-black flex justify-between" >
            <div className="border-b-2  w-10/12 border-gray-400 shadow-lg">
           <h2 className="font-bold">{list?.card?.info?.name}</h2>
           <h4> ₹{list?.card?.info?.price? list?.card?.info?.price/100 :list?.card?.info?.defaultPrice/100}</h4>
-           <p className=" text-xs">{list?.card?.info?.description}</p> 
+           <p className=" text-xs" >{list?.card?.info?.description}</p> 
        </div>
        
        <div className="  h-32 w-32">

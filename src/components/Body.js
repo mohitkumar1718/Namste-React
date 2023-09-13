@@ -26,7 +26,7 @@ const Body=()=>{
       
     }
   const status=useOnlineStatus();
-  if(status===false)return <h1>You are offline</h1>;
+   if(status===false)return <h1>You are offline</h1>;
    if(ListOfRestaurants.length===0)return <Shimmer/> ;
    
     return (

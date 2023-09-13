@@ -1,16 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Userfun=()=>{
-    const [count]=useState(0);
-    const [count2]=useState(1);
+   const [GitApi,setGitApi]=useState([]);
+   useEffect(()=>{
+    fetchData();
+   },[]);
+   const fetchData=async()=>{
+    const data=await fetch("https://api.github.com/users/mohitkumar1718");
+    const json= await data.json();
+   setGitApi(json);
+   console.log(json);
+   console.log(GitApi);
+   }
+    const {avatar_url,name}=GitApi;
+    
     return(
-        <div className="userCard">
-           <h1>count: {count}</h1>
-           <h1>count2: {count2}</h1>
-           <h2>Name: Mohit Kumar</h2>
-           <h3>Location : Faridabad</h3>
-           <h3>contact: @mohitkumar1718</h3>
-           <h4>jlnnlenj</h4>
+        <div className="flex justify-between m-7 p-6  ">
+        <div>
+           <h1 className="text-5xl font-extrabold"> {name}</h1>
+           <h2 className="text-3xl font-semibold" >Location : Faridabad</h2>
+           <h2 className="text-3xl font-semibold" >contact: @mohitkumar1718</h2>
+           </div>
+        <div className="">
+           <img src={avatar_url} alt="" />
+           </div>
+           
+        
            
         </div>
     )
