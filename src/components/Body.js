@@ -9,7 +9,7 @@ const Body=()=>{
    const [list,setList]=useState(ListOfRestaurants);
    const[searchText,setSearchText]=useState([]);
    const RestaurantcardLable=RestaurantLabel(RestaurantCard);
-   const{loginUser,setUserName}=useContext(userContext);
+  //  const{loginUser,setUserName}=useContext(userContext);
    
     useEffect(()=>{
       fetchData();
@@ -27,9 +27,9 @@ const Body=()=>{
     }
   const status=useOnlineStatus();
    if(status===false)return <h1>You are offline</h1>;
-   if(ListOfRestaurants.length===0)return <Shimmer/> ;
    
-    return (
+   
+    return (ListOfRestaurants.length===0)? (<Shimmer/>): (
        <div className="body ">
           <div className="flex ">
           <div className="m-4 p-4">

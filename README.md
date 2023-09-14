@@ -16,3 +16,10 @@
 - Tree shaking -Remove unused code
 - Different dev and production build
 
+# Setting up testing in our app
+ -Install React testing library
+ -Install jest
+ -Install jest
+ -Install Babel Dependencies
+ -Configure Babel
+ -Configure Parcel Config file to Disable Babel Default transpilation

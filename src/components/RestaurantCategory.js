@@ -28,19 +28,16 @@ const RestaurantCategory=({data})=>{
        </div>
        
        <div className="  h-32 w-32">
-        <button onClick={()=>{
+        <button onClick={()=>{ 
     dispatch(addItem({list}))
-  }} className=" p-1 absolute ml-9 mt-[6rem] rounded-lg bg-black text-white "> 
+  }} className=" p-1 absolute ml-9 mt-[6rem] rounded-lg bg-black text-white hover:bg-slate-700 "> 
         Add  +
          </button>
        <div>
-        <img className="h-32 w-32" src={IMG +list?.card?.info?.imageId } alt="" />
+        <img className="h-32 w-32 rounded-lg" src={IMG +list?.card?.info?.imageId } alt="" />
        </div>
        </div>
-        </div>)}
-            
-            
-
+        </div>)}        
          </div>
     )
 }

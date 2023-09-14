@@ -28,9 +28,6 @@ const Cart=()=>{
        </div>
        
        <div className="  h-32 w-32">
-        <button className=" p-1 absolute ml-9 mt-[6rem] rounded-lg bg-black text-white "> 
-        Add  +
-         </button>
        <div>
         <img className="h-32 w-32" src={IMG +lists?.list?.card?.info?.imageId } alt="" />
        </div>
