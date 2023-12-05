@@ -13,7 +13,7 @@ const Header=()=>{
 // drhdzn
     return(
    
-       <div className="flex justify-between bg-green-100 shadow-lg m-4 ">
+       <div className="flex justify-between bg-indigo-300 shadow-lg  ">
             <div className=" w-36">
              <img className="logo" src={LOGO_URL} alt="Logo" />
             </div>

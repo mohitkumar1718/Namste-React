@@ -15,7 +15,7 @@ const Userfun=()=>{
     const {avatar_url,name}=GitApi;
     
     return(
-        <div className=" bg-green-50 flex justify-between m-7 p-6 lg:max-w-screen-xl mx-auto ">
+        <div className=" bg-indigo-300 flex justify-between m-7 p-6 lg:max-w-screen-xl mx-auto ">
         
         <div className="">
            <img className="rounded-xl " src={avatar_url} alt="" />

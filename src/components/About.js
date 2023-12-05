@@ -9,7 +9,7 @@ class About extends Component{
     render(){
         // console.log("parent render");
         return (
-            <div>
+            <div className="bg-indigo-300">
             <Userfun name={"MOHIT KUMArr"}/>
             
         

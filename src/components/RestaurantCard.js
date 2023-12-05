@@ -21,7 +21,7 @@ const RestaurantCard=(props)=>{
    
  
     return(
-      <div className="m-4  p-4 w-[270px] h-[400px] bg-gray-100 hover:bg-green-100 hover:shadow-xl rounded-lg cursor-pointer  ">
+      <div className="m-4  p-4 w-[270px] h-[400px] bg-indigo-200 hover:bg-indigo-300 hover:shadow-xl rounded-lg cursor-pointer  ">
          <img  className="res-logo  rounded-lg  h-[200px] w-[240px]" src={CDN_URL+cloudinaryImageId}  alt="img" />
   
          <h4 className=" font-bold py-2 text-lg">{name}</h4>
